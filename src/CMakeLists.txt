@@ -51,6 +51,7 @@ set(SOURCES
     pdu_iterator.cpp
     pdu_option.cpp
     pppoe.cpp
+	ppp.cpp
     radiotap.cpp
     rawpdu.cpp
     rsn_information.cpp
@@ -66,6 +67,7 @@ set(SOURCES
     tcp_ip/stream_identifier.cpp
     timestamp.cpp
     udp.cpp
+	dns_transaction.cpp
     utils/checksum_utils.cpp
     utils/frequency_utils.cpp
     utils/radiotap_parser.cpp
@@ -82,6 +84,7 @@ set(HEADERS
     ${LIBTINS_INCLUDE_DIR}/tins/handshake_capturer.h
     ${LIBTINS_INCLUDE_DIR}/tins/stp.h
     ${LIBTINS_INCLUDE_DIR}/tins/pppoe.h
+    ${LIBTINS_INCLUDE_DIR}/tins/ppp.h
     ${LIBTINS_INCLUDE_DIR}/tins/config.h
     ${LIBTINS_INCLUDE_DIR}/tins/constants.h
     ${LIBTINS_INCLUDE_DIR}/tins/crypto.h
@@ -143,6 +146,7 @@ set(HEADERS
     ${LIBTINS_INCLUDE_DIR}/tins/timestamp.h
     ${LIBTINS_INCLUDE_DIR}/tins/tins.h
     ${LIBTINS_INCLUDE_DIR}/tins/udp.h
+    ${LIBTINS_INCLUDE_DIR}/tins/dns_transaction.h
     ${LIBTINS_INCLUDE_DIR}/tins/utils.h
     ${LIBTINS_INCLUDE_DIR}/tins/utils/checksum_utils.h
     ${LIBTINS_INCLUDE_DIR}/tins/utils/frequency_utils.h
@@ -211,6 +215,7 @@ ADD_LIBRARY(
 )
 
 TARGET_LINK_LIBRARIES(tins ${PCAP_LIBRARY} ${OPENSSL_LIBRARIES} ${LIBTINS_OS_LIBS})
+TARGET_INCLUDE_DIRECTORIES(tins INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${LIBTINS_INCLUDE_DIR}>)
 
 SET_TARGET_PROPERTIES(tins PROPERTIES OUTPUT_NAME tins)
 SET_TARGET_PROPERTIES(tins PROPERTIES VERSION ${LIBTINS_VERSION} SOVERSION ${LIBTINS_VERSION} )

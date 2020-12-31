@@ -123,6 +123,24 @@ Tins::PDU* pdu_from_flag(Constants::IP::e flag,
     return 0;
 }
 
+Tins::PDU* pdu_from_flag(Constants::PPP::e flag,
+                         const uint8_t* buffer,
+                         uint32_t size,
+                         bool rawpdu_on_no_match) {
+    switch (flag) {
+        case Constants::PPP::IP:
+            return new Tins::IP(buffer, size);
+        case Constants::PPP::IPv6:
+            return new Tins::IPv6(buffer, size);
+        default:
+            break;
+    }
+    if (rawpdu_on_no_match) {
+        return new Tins::RawPDU(buffer, size);
+    }
+    return 0;
+}
+
 #ifdef TINS_HAVE_PCAP
 PDU* pdu_from_dlt_flag(int flag,
                        const uint8_t* buffer,

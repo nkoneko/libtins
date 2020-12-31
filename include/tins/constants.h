@@ -157,6 +157,13 @@ struct ARP {
     };
 };
 
+struct PPP {
+    enum e {
+        IP = 0x0021,
+        IPv6 = 0x0057
+    };
+};
+
 } // Constants
 } // Tins
 

@@ -45,6 +45,7 @@
 #include <tins/ppi.h>
 #include <tins/ip.h>
 #include <tins/ipv6.h>
+#include <tins/ppp.h>
 #include <tins/detail/pdu_helpers.h>
 
 using std::string;
@@ -204,6 +205,9 @@ PtrPacket BaseSniffer::next_packet() {
                 handler = &sniff_loop_handler<PKTAP>;
                 break;
             #endif // DLT_PKTAP
+            case DLT_PPP:
+                handler = &sniff_loop_handler<PPP>;
+                break;
 
             default:
                 throw unknown_link_type();

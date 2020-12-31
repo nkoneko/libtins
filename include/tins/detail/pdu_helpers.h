@@ -45,6 +45,8 @@ PDU* pdu_from_flag(Constants::Ethernet::e flag, const uint8_t* buffer,
                    uint32_t size, bool rawpdu_on_no_match = true);
 PDU* pdu_from_flag(Constants::IP::e flag, const uint8_t* buffer,
                    uint32_t size, bool rawpdu_on_no_match = true);
+PDU* pdu_from_flag(Constants::PPP::e flag, const uint8_t* buffer,
+                   uint32_t size, bool rawpdu_on_no_match = true);
 #ifdef TINS_HAVE_PCAP
 PDU* pdu_from_dlt_flag(int flag, const uint8_t* buffer,
                        uint32_t size, bool rawpdu_on_no_match = true);
